@@ -2,6 +2,8 @@ package com.example.docker.hello;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,11 +15,14 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class HelloController {
 
+    private static final Logger log = LoggerFactory.getLogger(HelloController.class);
+
     @Autowired
     private HelloService helloService;
 
     @GetMapping("/ping")
     public String ping() {
+        log.info("Called ping()");
         return helloService.getResult();
     }
 
