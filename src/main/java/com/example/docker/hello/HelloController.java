@@ -1,6 +1,7 @@
 package com.example.docker.hello;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,13 @@ public class HelloController {
     }
 
 
+    // Call service 2
+
     @Autowired
     RestTemplate restTemplate;
+
+    @Value("${service2.url}")
+    private String service2Url;
 
     @Bean
     public RestTemplate getRestTemplate() {
@@ -28,7 +34,7 @@ public class HelloController {
 
     @GetMapping("/call")
     public String callAnotherService() {
-        String result = restTemplate.getForObject("http://localhost:8082/target", String.class);
+        String result = restTemplate.getForObject(service2Url + "/target", String.class);
         return result;
     }
 
