@@ -2,7 +2,7 @@
 <configuration debug="false">
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>logstash:5044</destination>
+        <destination>localhost:5044</destination>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc/>
@@ -27,6 +27,6 @@
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="logstash"/>
     </root>
-    <logger name="org.springframework" level="INFO"/>
-    <logger name="com.example.workshophelloservice" level="INFO"/>
+<!--    <logger name="org.springframework" level="INFO"/>-->
+    <logger name="com.example.docker" level="INFO"/>
 </configuration>

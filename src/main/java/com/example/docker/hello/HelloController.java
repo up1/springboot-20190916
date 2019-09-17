@@ -15,7 +15,8 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class HelloController {
 
-    private static final Logger log = LoggerFactory.getLogger(HelloController.class);
+    private static final Logger log =
+            LoggerFactory.getLogger(HelloController.class);
 
     @Autowired
     private HelloService helloService;
