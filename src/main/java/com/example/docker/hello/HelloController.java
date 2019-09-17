@@ -30,7 +30,8 @@ public class HelloController {
     public String hi(@PathVariable String name) {
 
         // Metric name = tracking.user
-        Counter counter = meterRegistry.counter("tracking.user", "username", name);
+        Counter counter =
+                meterRegistry.counter("tracking.user", "username", name);
         counter.increment();
 
         return "Hi, " + name;
